@@ -1,1 +1,1 @@
-require 'edgecase'
+require './edgecase'

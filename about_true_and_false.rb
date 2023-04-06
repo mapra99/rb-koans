@@ -1,4 +1,4 @@
-require 'edgecase'
+require './edgecase'
 
 class AboutTrueAndFalse < EdgeCase::Koan
   def truth_value(condition)

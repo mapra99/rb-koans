@@ -1,4 +1,4 @@
-require 'edgecase'
+require './edgecase'
 
 class AboutArrayAssignment < EdgeCase::Koan
   def test_non_parallel_assignment

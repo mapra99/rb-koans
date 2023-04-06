@@ -1,7 +1,7 @@
-require 'edgecase'
+require './edgecase'
 
 # You need to write the triangle method in the file 'triangle.rb'
-require 'triangle.rb'
+require './triangle.rb'
 
 class AboutTriangleAssignment < EdgeCase::Koan
   # The first assignment did not talk about how to handle errors.

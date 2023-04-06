@@ -1,4 +1,4 @@
-require 'edgecase'
+require './edgecase'
 
 class AboutBlocks < EdgeCase::Koan
   def method_with_block

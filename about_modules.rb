@@ -1,4 +1,4 @@
-require 'edgecase'
+require './edgecase'
 
 class AboutModules < EdgeCase::Koan
   module Nameable

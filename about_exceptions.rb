@@ -1,4 +1,4 @@
-require 'edgecase'
+require './edgecase'
 
 class AboutExceptions < EdgeCase::Koan
 

@@ -1,4 +1,4 @@
-require 'edgecase'
+require './edgecase'
 
 class AboutStrings < EdgeCase::Koan
   def test_double_quoted_strings_are_strings

@@ -1,4 +1,4 @@
-require 'edgecase'
+require './edgecase'
 
 class AboutOpenClasses < EdgeCase::Koan
   class Dog

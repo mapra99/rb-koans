@@ -1,4 +1,4 @@
-require 'edgecase'
+require './edgecase'
 
 class DiceSet
   attr_reader :values

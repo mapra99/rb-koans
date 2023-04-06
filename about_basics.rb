@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # -*- ruby -*-
 
-require 'edgecase'
+require './edgecase'
 
 class AboutAsserts < EdgeCase::Koan
 

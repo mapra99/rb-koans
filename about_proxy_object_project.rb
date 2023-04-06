@@ -1,4 +1,4 @@
-require 'edgecase'
+require './edgecase'
 
 # Project: Create a Proxy Class
 #
