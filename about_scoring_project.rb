@@ -29,8 +29,51 @@ require './edgecase'
 #
 # Your goal is to write the score method.
 
+def group_dice(dice)
+  frequencies = dice.group_by { |number| number }
+  frequencies.each do |number, frequency|
+    yield(number, frequency)
+  end
+end
+
+def ones_set_rule(number, frequency)
+  yield(1000) if number == 1 && frequency.count >= 3
+end
+
+def single_ones_rule(number, frequency)
+  return if number != 1
+
+  remainder = frequency.count % 3
+  return if remainder.zero?
+  
+  yield(100 * remainder)
+end
+
+def non_ones_set_rule(number, frequency)
+  return if number == 1
+
+  yield(100 * number) if frequency.count >= 3
+end
+
+def single_fives_rule(number, frequency)
+  return if number != 5
+
+  remainder = frequency.count % 3
+  return if remainder.zero?
+
+  yield(50 * remainder)
+end
+
 def score(dice)
-  # You need to write this method
+  result = 0
+  group_dice(dice) do |number, frequency|
+    ones_set_rule(number, frequency) { |value| result += value }
+    non_ones_set_rule(number, frequency) { |value| result += value }
+    single_ones_rule(number, frequency) { |value| result += value }
+    single_fives_rule(number, frequency) { |value| result += value }
+  end
+
+  result
 end
 
 class AboutScoringAssignment < EdgeCase::Koan
@@ -47,7 +90,7 @@ class AboutScoringAssignment < EdgeCase::Koan
   end
 
   def test_score_of_mulitple_1s_and_5s_is_the_sum
-    assert_equal 200, score([1,5,5,1])
+    assert_equal 300, score([1,5,5,1])
   end
 
   def test_score_of_single_2s_3s_4s_and_6s_are_zero
