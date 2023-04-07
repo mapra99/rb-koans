@@ -13,8 +13,27 @@ require './edgecase'
 # of the Proxy class is given in the AboutProxyObjectProject koan.
 
 class Proxy
+  attr_reader :messages
+  attr_reader :object
+
   def initialize(target_object)
     @object = target_object
+    @messages = []
+  end
+
+  def called?(message)
+    messages.include?(message.to_sym)
+  end
+
+  def number_of_times_called(message)
+    messages.count(message.to_sym)
+  end
+
+  private
+
+  def method_missing(method_name, *args)
+    messages.push(method_name.to_sym)
+    object.send(method_name, *args)
   end
 end
 
